@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf8
 
-SERVER = 'ws://185.183.159.86:3333/websocket'
-USER = 'mixer@cocktailmixer.app'
-PASSWORD = 'M1nx1katz3'
+#SERVER = 'ws://185.183.159.86:3333/websocket'
+#USER = 'mixer@cocktailmixer.app'
+#PASSWORD = 'M1nx1katz3'
 
-# SERVER = 'ws://127.0.0.1:3000/websocket'
-# USER = 'machine@cocktailmixer.app'
-# PASSWORD = 'M1nx1katz3'
+SERVER = 'ws://127.0.0.1:3000/websocket'
+USER = 'machine@cocktailmixer.app'
+PASSWORD = 'M1nx1katz3'
 
 # arduino serial port
 SERIAL_PORT = 'COM3'

@@ -185,9 +185,9 @@ def calculate_run_on_weight(mixedpartamount, mixedcocktailamount, totalcocktaila
     return True
 
 
-def wait_for_ingredient_refill(queue_item, valve, ingredient):
+def wait_for_ingredient_refill(queueItem, valve, ingredient):
     stop_pump(valve)
-    update_status(queue_item, 'error')
+    update_status(queueItem, 'error')
 
     write_log('warning', 'Ingredient at valve {} empty'.format(valve + 1))
 
@@ -201,12 +201,12 @@ def wait_for_ingredient_refill(queue_item, valve, ingredient):
         if not check_glass(scale.getGram()):
             write_log('warning', 'Glass was lifted while refilling ingredient for valve {}'.format(valve + 1))
             return False
-        if queue_item['status'] == 'canceled':
+        if queueItem['status'] == 'canceled':
             write_log('warning',
                       'Mixing was canceled by user while refilling ingredient for valve {}'.format(valve + 1))
             return False
         led.update()
-    update_status(queue_item, 'mixing')
+    update_status(queueItem, 'mixing')
     if ingredient['pump'] != 0:
         start_pump(valve)
     return True
@@ -392,7 +392,7 @@ while True:
             client.call('configuration.update', ["mixer", "scale_ratio", ratio], callback_function)
             client.call('configuration.setStatus', ["idle"], callback_function)
 
-        if mixer_status['value']['scaleMode']:
+        if mixer_status['value']['scale_mode']:
             weight = scale.getGram()
             client.call('configuration.setCurrentWeight', [weight], callback_function)
 
